@@ -9,11 +9,17 @@ pipeline {
             }
         }
 
-        stage('Run application') {
+        stage('Run tests') {
             steps {
-                bat 'node server.js'
+                bat 'npm test'
             }
         }
 
+    }
+
+    post {
+        success {
+            echo 'Bravo, déploiement réussi !'
+        }
     }
 }
